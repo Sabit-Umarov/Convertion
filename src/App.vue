@@ -30,6 +30,7 @@ export default {
   padding: 24px;
 }
 .main-wrapper{
+  width: 100%;
   max-width: 1400px;
   min-width: 300px;
   margin: auto;
