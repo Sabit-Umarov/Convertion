@@ -1,52 +1,68 @@
 <template>
   <div class="inside-wrapper">
-    <v-card width="360px" elevation="24">
-      <v-card-subtitle>
-        {{currentCurrency.Name}}
-      </v-card-subtitle>
-      <div class="currency-block">
-        <v-select
-          :items="codes"
-          v-model="current"
-          label="RUB"
-          solo
-          @change="selectBase"
-        ></v-select>
-        <v-text-field
-        v-model="selectedBase"
-        :rules="[rules.number]"
-        @input="calculate" 
-        class="currency-block__input"
-        label="Введите сумму"></v-text-field>
-      </div>
-    </v-card>
-    <v-btn
-      elevation="24"
-      icon
-      class="currency-block__button"
-      @click="handleChangeCurrency()"
-    >
-      <v-icon
-      color="#269bff"
-      >mdi-arrow-left-right</v-icon>
-    </v-btn>
-    <v-card width="360px" elevation="24">
-      <v-card-subtitle>
-        {{currentResult.Name}}
-      </v-card-subtitle>
-      <div class="currency-block">
-        <v-select
-          :items="codes"
-          v-model="selectedSecond"
-          :label="currentResult.CharCode"
-          solo
-          @change="selectSecond"
-        ></v-select>
-        <span class="currency-block__result">
-          {{result.toFixed(4)}}
-        </span>
-      </div>
-    </v-card>
+    <v-container>
+      <v-row>
+        <v-col cols="12" lg="5" md="5">
+          <div class="centrolize-container">
+            <v-card width="360px" elevation="24">
+              <v-card-subtitle>
+                {{currentCurrency.Name}}
+              </v-card-subtitle>
+              <div class="currency-block">
+                <v-select
+                  :items="codes"
+                  v-model="current"
+                  label="RUB"
+                  solo
+                  @change="selectBase"
+                ></v-select>
+                <v-text-field
+                v-model="selectedBase"
+                :rules="[rules.number]"
+                @input="calculate" 
+                class="currency-block__input"
+                label="Введите сумму"></v-text-field>
+              </div>
+            </v-card>
+          </div>
+        </v-col>
+        <v-col cols="12" lg="2" md="2">
+          <div class="centrolize-container">
+            <v-btn
+              elevation="24"
+              icon
+              class="currency-block__button"
+              @click="handleChangeCurrency()"
+            >
+              <v-icon
+              color="#269bff"
+              >mdi-arrow-left-right</v-icon>
+            </v-btn>
+          </div>
+        </v-col>
+        <v-col cols="12" lg="5" md="5">
+          <div class="centrolize-container">
+              <v-card width="360px" elevation="24">
+                <v-card-subtitle>
+                  {{currentResult.Name}}
+                </v-card-subtitle>
+                <div class="currency-block">
+                  <v-select
+                    :items="codes"
+                    v-model="selectedSecond"
+                    :label="currentResult.CharCode"
+                    solo
+                    @change="selectSecond"
+                  ></v-select>
+                  <span class="currency-block__result">
+                    {{result.toFixed(4)}}
+                  </span>
+                </div>
+            </v-card>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -113,6 +129,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.centrolize-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 .inside-wrapper {
   display: flex;
   align-items: center;
